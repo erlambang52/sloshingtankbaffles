@@ -1,0 +1,69 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | cfMesh: A library for mesh generation          | 
+|  \\    /   O peration     |                                                |
+|   \\  /    A nd           | Author: Franjo Juretic                         | 
+|    \\/     M anipulation  | E-mail: franjo.juretic@c-fields.com            |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version   2.0;
+    format    ascii;
+    class     dictionary;
+    location  "system";
+    object    meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile "tank_wall.stl";
+
+maxCellSize 0.05;
+
+boundaryCellSize 0.05;
+
+minCellSize 0.05;
+
+localRefinement
+{
+   
+}
+
+surfaceMeshRefinement
+
+{
+	mesh_baffle
+	{
+		surfaceFile		"baffles.stl";
+		additionalRefinementLevels	1;
+	}
+
+}
+
+boundaryLayers
+{
+    nLayers 5;
+
+    thicknessRatio 1.1;
+
+    maxFirstLayerThickness 0.01;
+
+//    patchBoundaryLayers
+//    {
+//    }
+}
+
+renameBoundary
+{
+    defaultName		tank_wall;
+    defaultType		wall;
+
+    newPatchNames
+    {
+
+    }
+}
+               
+     
+// ************************************************************************* //
